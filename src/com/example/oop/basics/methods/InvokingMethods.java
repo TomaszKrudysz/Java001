@@ -1,4 +1,8 @@
 package com.example.oop.basics.methods;
+class Triangle {
+    float a; //dlugosc podstawy
+    float h; //wysokosc trojkata
+}
 
 class MyMath {
     public void add(int a, int b){
