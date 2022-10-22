@@ -1,0 +1,45 @@
+package com.example.swing;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+/**
+ * Created by tkrud on 22.10.2022.
+ */
+public class JProgressBarExample extends JFrame {
+    public static void main(String[] args) {
+        JProgressBarExample frame = new JProgressBarExample();
+
+        JProgressBar progressBar = new JProgressBar();
+        progressBar.setMinimum(0);
+        progressBar.setMaximum(200);
+
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    for (int i = 0; i<=200; i+=20){
+                        Thread.sleep(200);
+                        progressBar.setValue(i);
+                    }
+
+                }catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        frame.add(progressBar);
+        t.start();
+
+        frame.setLayout(new FlowLayout());
+        frame.setSize(640, 480);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+}
